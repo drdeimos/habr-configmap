@@ -27,7 +27,7 @@ spec:
         securityContext:
           runAsUser: 40004
           allowPrivilegeEscalation: false
-        command: [ "/app/go-conf-example" ]
+        command: [ "/bin/habr-configmap" ]
         workingDir: "/app"
         volumeMounts:
         - name: app-conf
