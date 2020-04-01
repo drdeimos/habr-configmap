@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: {{ printf "%s-app" .Chart.Name | quote }}
+  name: {{ printf "%s-app-v4" .Chart.Name | quote }}
 data:
   config.json: |
     {
