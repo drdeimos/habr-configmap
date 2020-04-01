@@ -17,8 +17,8 @@ helm install \
 ```shell
 git clone https://github.com/drdeimos/habr-configmap
 helm upgrade \
+  habr-configmap \
   ./habr-configmap/charts/habr-configmap/ \
-  --name habr-configmap \
-  --set 'name.production=Tod' \
+  --set 'name.production=Mary' \
   --set 'global.env=production'
 ```
