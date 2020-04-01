@@ -22,7 +22,8 @@ spec:
       containers:
       - name: {{ .Chart.Name | quote }}
 {{- include "resources_app" . | indent 8 }}
-{{ tuple "go-conf-example" . | include "werf_container_image" | indent 8 }}
+        image: "drdeimosnn/habr-configmap:0.0.1"
+        imagePullPolicy: Always
         securityContext:
           runAsUser: 40004
           allowPrivilegeEscalation: false
@@ -33,24 +34,3 @@ spec:
           mountPath: /app/configfiles
         - name: app-secrets
           mountPath: /app/secretfiles
-        ports:
-        - containerPort: 8080
-          name: http
-          protocol: TCP
-        env:
-        - name: GIN_MODE
-          value: "debug"
-{{ tuple "go-conf-example" . | include "werf_container_env" | indent 8 }}
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: {{ .Chart.Name | quote }}
-spec:
-  selector:
-    app: {{ .Chart.Name | quote }}
-  clusterIP: "None"
-  ports:
-  - name: http
-    port: 8080
-    protocol: TCP
